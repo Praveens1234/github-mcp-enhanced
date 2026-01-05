@@ -1,171 +1,50 @@
-# Enhanced GitHub MCP
+# GitHub MCP Enhanced
 
-An advanced Model Context Protocol (MCP) server for comprehensive GitHub integration with extended functionality beyond the standard GitHub MCP.
+This repository contains an enhanced version of the GitHub MCP server with additional batch operations capabilities.
 
 ## Features
 
-- **Enhanced Repository Management**: Create, delete, list, and manage repositories with advanced options
-- **File Operations**: Create, update, and delete files in repositories
-- **Branch Management**: Create and delete branches
-- **Issues & Pull Requests**: Full lifecycle management for issues and PRs
-- **GitHub Actions**: List workflows, trigger runs, and manage workflow executions
-- **Search Capabilities**: Search code, issues, repositories, and users
-- **User & Organization Management**: Get user info and list organizational repositories
-- **Release Management**: Create releases and upload assets
-- **Commit Operations**: List commits and get specific commit details
-- **Collaborator Management**: Add and remove repository collaborators
-- **Webhook Management**: Create and delete repository webhooks
-- **Project Management**: List and create projects
-- **Milestone Management**: List and create milestones
-- **Label Management**: List, create, and delete labels
-- **Gist Operations**: List, create, and delete gists
-- **Advanced Repository Features**: Transfer ownership, archive/unarchive, and manage security alerts
+- Full GitHub API integration
+- Batch operations for efficient processing
+- Directory scanning and synchronization
+- Multiple file upload capabilities
+- Authentication management
 
-## Prerequisites
+## Setup
 
-- Python 3.8 or higher
-- GitHub Personal Access Token (PAT) with appropriate scopes
-
-## Installation
-
-1. Clone the repository:
-```bash
-git clone https://github.com/Praveens1234/github-mcp-enhanced.git
-cd github-mcp-enhanced
-```
-
-2. Install dependencies:
-```bash
-pip install -r requirements.txt
-```
-
-## Configuration
-
-Set your GitHub Personal Access Token as an environment variable:
-```bash
-export GITHUB_PAT=your_github_pat_here
-```
+1. Clone the repository
+2. Install dependencies: `pip install mcp starlette uvicorn httpx aiofiles`
+3. Configure credentials in `credentials.json`
+4. Run the server: `python server.py`
 
 ## Usage
 
-1. Start the server:
-```bash
-python server.py
-```
+The server exposes various tools for interacting with GitHub, including:
 
-2. Connect your MCP client to:
-```
-http://localhost:9601/sse
-```
+- Repository management
+- Issue tracking
+- Pull request handling
+- Workflow management
+- Batch operations (new)
 
-## Available Tools
+For more details on available tools, see the server.py file.
 
-### Repository Tools
-- `list_repos`: List repositories with enhanced filtering
-- `get_repo`: Get repository details
-- `create_repo`: Create a new repository with additional options
-- `delete_repo`: Delete a repository
-- `get_repo_contents`: Get repository contents
-- `create_file`: Create a new file in a repository
-- `update_file`: Update an existing file in a repository
-- `delete_file`: Delete a file from a repository
-- `get_branches`: Get all branches in a repository
-- `create_branch`: Create a new branch
-- `delete_branch`: Delete a branch
+## Batch Operations Tools
 
-### Issues & Pull Requests
-- `list_issues`: List issues in a repository with enhanced filtering
-- `create_issue`: Create a new issue
-- `close_issue`: Close an issue
-- `update_issue`: Update an issue
-- `list_pull_requests`: List pull requests
-- `create_pull_request`: Create a new pull request
-- `merge_pull_request`: Merge a pull request
+This enhanced version includes several new batch operations tools:
 
-### Actions
-- `list_workflows`: List GitHub Actions workflows
-- `trigger_workflow`: Trigger a workflow
-- `list_workflow_runs`: List workflow runs
-- `cancel_workflow_run`: Cancel a workflow run
-
-### Search
-- `search_code`: Search code
-- `search_issues`: Search issues
-- `search_repositories`: Search repositories
-- `search_users`: Search users
-
-### Users & Organizations
-- `get_user`: Get user information
-- `list_user_orgs`: List organizations for a user
-- `list_org_repos`: List organization repositories
-
-### Releases
-- `list_releases`: List releases
-- `create_release`: Create a release
-- `upload_release_asset`: Upload a release asset
-
-### Commits
-- `list_commits`: List commits
-- `get_commit`: Get a commit
-
-### Collaborators
-- `list_collaborators`: List collaborators
-- `add_collaborator`: Add a collaborator
-- `remove_collaborator`: Remove a collaborator
-
-### Webhooks
-- `list_hooks`: List webhooks
-- `create_hook`: Create a webhook
-- `delete_hook`: Delete a webhook
-
-### Projects
-- `list_projects`: List projects
-- `create_project`: Create a project
-
-### Milestones
-- `list_milestones`: List milestones
-- `create_milestone`: Create a milestone
-
-### Labels
-- `list_labels`: List labels
-- `create_label`: Create a label
-- `delete_label`: Delete a label
-
-### Gists
-- `list_gists`: List gists
-- `create_gist`: Create a gist
-- `delete_gist`: Delete a gist
-
-### Advanced Repository Management
-- `transfer_repo`: Transfer repository ownership
-- `archive_repo`: Archive a repository
-- `unarchive_repo`: Unarchive a repository
-- `enable_vulnerability_alerts`: Enable vulnerability alerts
-- `disable_vulnerability_alerts`: Disable vulnerability alerts
-- `enable_automated_security_fixes`: Enable automated security fixes
-- `disable_automated_security_fixes`: Disable automated security fixes
-
-## Authentication
-
-The server supports multiple authentication methods:
-- **Personal Access Token (PAT)**: Set the `GITHUB_PAT` environment variable
-- **GitHub App Installation Tokens**: Use the `/auth/app` endpoint
-- **OAuth Flow**: Initiate OAuth through the `/auth/oauth` endpoint
-
-## Security
-
-- Store your GitHub PAT securely and never commit it to version control
-- Use the principle of least privilege when creating PATs
-- Regularly rotate your tokens
-- Monitor API usage and rate limits
+1. **scan_local_directory** - Scan and analyze local directory structure
+2. **read_multiple_files** - Read content of multiple files in bulk
+3. **upload_directory_to_github** - Upload an entire local directory to a GitHub repository
+4. **upload_multiple_directories_to_github** - Upload multiple local directories to different paths
+5. **sync_local_directory_with_github** - Synchronize a local directory with a GitHub repository
+6. **sync_multiple_directories_with_github** - Synchronize multiple local directories
+7. **get_batch_operation_status** - Track batch operation progress
+8. **cancel_batch_operation** - Cancel ongoing batch operations
 
 ## Contributing
 
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
+Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
